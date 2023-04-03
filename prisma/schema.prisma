@@ -11,15 +11,15 @@ datasource db {
 }
 
 model User {
-  id              String    @id @default(auto()) @map("_id") @db.ObjectId
-  name            String?
-  email           String?   @unique
-  email_verified  DateTime?
-  image           String?
-  hashed_password String?
-  created_at      DateTime  @default(now())
-  updated_at      DateTime  @updatedAt
-  favorite_ids    String[]  @db.ObjectId
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  name           String?
+  email          String?   @unique
+  emailVerified  DateTime?
+  image          String?
+  hashedPassword String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  favoriteIds    String[]  @db.ObjectId
 
   accounts     Account[]
   listings     Listing[]
@@ -27,54 +27,54 @@ model User {
 }
 
 model Account {
-  id                  String  @id @default(auto()) @map("_id") @db.ObjectId
-  user_id             String  @db.ObjectId
-  type                String
-  provider            String
-  provider_account_id String
-  refresh_token       String? @db.String
-  access_token        String? @db.String
-  expires_at          Int?
-  token_type          String?
-  scope               String?
-  id_token            String? @db.String
-  session_state       String?
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  userId            String  @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.String
+  access_token      String? @db.String
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.String
+  session_state     String?
   // relation using the field user ID and it references to the user model id field
   // onDelete => it an instruction what happens to this record once user is deleted for example 
-  user                User    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   //  need unique combination of these two fields provider
   // diffrent with common @unique 
-  @@unique([provider, provider_account_id])
+  @@unique([provider, providerAccountId])
 }
 
 model Listing {
-  id             String   @id @default(auto()) @map("_id") @db.ObjectId
-  title          String
-  description    String
-  image_src      String
-  created_at     DateTime @default(now())
-  category       String
-  room_count     Int
-  bathroom_count Int
-  guest_count    Int
-  location_value String
-  user_id        String   @db.ObjectId
-  price          Int
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  description   String
+  imageSrc      String
+  createdAt     DateTime @default(now())
+  category      String
+  roomCount     Int
+  bathroomCount Int
+  guestCount    Int
+  locationValue String
+  userId        String   @db.ObjectId
+  price         Int
 
-  user         User          @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
   reservations Reservation[]
 }
 
 model Reservation {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  user_id     String   @db.ObjectId
-  listing_id  String   @db.ObjectId
-  start_date  DateTime
-  end_date    DateTime
-  total_price Int
-  created_at  DateTime @default(now())
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String   @db.ObjectId
+  listingId  String   @db.ObjectId
+  startDate  DateTime
+  endDate    DateTime
+  totalPrice Int
+  createdAt  DateTime @default(now())
 
-  user    User    @relation(fields: [user_id], references: [id], onDelete: Cascade)
-  listing Listing @relation(fields: [listing_id], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
 }

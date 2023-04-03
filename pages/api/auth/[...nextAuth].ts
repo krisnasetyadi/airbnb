@@ -36,11 +36,11 @@ export const authOptions: AuthOptions = {
           },
         });
 
-        if (!user || !user?.hashed_password) {
+        if (!user || !user?.hashedPassword) {
           throw new Error('Invalid Credentials');
         }
 
-        const isCorrectPassword = await bcrypt.compare(credentials.password, user.hashed_password);
+        const isCorrectPassword = await bcrypt.compare(credentials.password, user.hashedPassword);
         if (!isCorrectPassword) {
           throw new Error('Invalid Credentials');
         }

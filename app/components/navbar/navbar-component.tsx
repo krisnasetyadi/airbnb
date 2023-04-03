@@ -1,16 +1,19 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
 'use client';
 import React, { FC } from 'react';
 import Container from '../container-component';
 import Logo from './logo-component';
 import Search from './search-component';
 import UserMenu from './user-menu-component';
-import { User } from '@prisma/client';
+
+import { SafeUser } from '@/app/types';
 
 interface NavbarProps {
   // we can use User from prisma/client
   // this was generated once your run npx prisma db push
   //  we can use the very same user type that we defined in our Prisma schema
-  currentUser?: User | null;
+  currentUser?: SafeUser | null;
 }
 
 const Navbar: FC<NavbarProps> = ({ currentUser }) => {
