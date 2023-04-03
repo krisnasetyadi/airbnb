@@ -4,6 +4,7 @@ TechStack:
 - Prisma
 - Tailwind
 - Mongodb
+- Zustand
 
 ## Getting Started
 

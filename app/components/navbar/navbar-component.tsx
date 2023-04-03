@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import Container from '../container-component';
 import Logo from './logo-component';
