@@ -5,6 +5,8 @@ TechStack:
 - Tailwind
 - Mongodb
 - Zustand
+- Cloudinary
+- Leaflet
 
 ## Getting Started
 
