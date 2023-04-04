@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/named */
 'use client';
@@ -10,13 +12,15 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import useRegisterModal from '../../hooks/useRegisterModal';
 import Modal from './modal-component';
 import Heading from '../heading-component';
-import Input from '../input-component';
+import Input from '../inputs/input-component';
 import { toast } from 'react-hot-toast';
 import Button from '../button-component';
 import { signIn } from 'next-auth/react';
+import useLoginModal from '@/app/hooks/useLoginModal';
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -76,6 +80,11 @@ const RegisterModal = () => {
     </div>
   );
 
+  const toggle = useCallback(() => {
+    loginModal.onOpen();
+    registerModal.onClose();
+  }, [registerModal, loginModal]);
+
   const footerContent = (
     <div className="flex flex-col gap-4 mt-3">
       <hr />
@@ -94,10 +103,7 @@ const RegisterModal = () => {
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="justify-center flex flex-row items-center gap-2">
           <div className="">Already have an account ?</div>
-          <div
-            onClick={registerModal.onClose}
-            className="text-neutral-800 cursor-pointer hover:underline"
-          >
+          <div onClick={toggle} className="text-neutral-800 cursor-pointer hover:underline">
             Login
           </div>
         </div>

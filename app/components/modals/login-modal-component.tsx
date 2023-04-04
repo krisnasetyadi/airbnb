@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/named */
 'use client';
@@ -11,14 +13,16 @@ import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import useLoginModal from '../../hooks/useLoginModal';
 import Modal from './modal-component';
 import Heading from '../heading-component';
-import Input from '../input-component';
+import Input from '../inputs/input-component';
 import { toast } from 'react-hot-toast';
 import Button from '../button-component';
 import { useRouter } from 'next/navigation';
+import useRegisterModal from '@/app/hooks/useRegisterModal';
 
 const LoginModal = () => {
   const router = useRouter();
   const loginModal = useLoginModal();
+  const registerModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -72,6 +76,11 @@ const LoginModal = () => {
     </div>
   );
 
+  const toggle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [registerModal, loginModal]);
+
   const footerContent = (
     <div className="flex flex-col gap-4 mt-3">
       <hr />
@@ -89,12 +98,9 @@ const LoginModal = () => {
       />
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="justify-center flex flex-row items-center gap-2">
-          <div className="">Already have an account ?</div>
-          <div
-            onClick={loginModal.onClose}
-            className="text-neutral-800 cursor-pointer hover:underline"
-          >
-            Login
+          <div className="">First time using Airbnb?</div>
+          <div onClick={toggle} className="text-neutral-800 cursor-pointer hover:underline">
+            Create an account
           </div>
         </div>
       </div>
