@@ -8,6 +8,7 @@ import Search from './search-component';
 import UserMenu from './user-menu-component';
 
 import { SafeUser } from '@/app/types';
+import Categories from './category-component';
 
 interface NavbarProps {
   // we can use User from prisma/client
@@ -28,6 +29,7 @@ const Navbar: FC<NavbarProps> = ({ currentUser }) => {
           </div>
         </Container>
       </div>
+      <Categories />
     </div>
   );
 };
