@@ -21,7 +21,6 @@ const CategoryBox: FC<CategoryBoxProps> = ({ icon: Icon, label, selected }) => {
     if (params) {
       currentQuery = qs.parse(params.toString());
     }
-    console.log('currentQuery', currentQuery);
     const updatedQuery: any = {
       ...currentQuery,
       category: label,
@@ -40,6 +39,7 @@ const CategoryBox: FC<CategoryBoxProps> = ({ icon: Icon, label, selected }) => {
     );
     router.push(url);
   }, [label, params, router]);
+
   return (
     <div
       onClick={handleClick}

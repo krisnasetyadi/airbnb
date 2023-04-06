@@ -24,12 +24,6 @@ export async function POST(req: Request) {
     location,
     price,
   } = body;
-  console.log('body', body);
-  //   Object.keys(body).forEach((value: any) => {
-  //     if (!body[value]) {
-  //       NextResponse.error();
-  //     }
-  //   });
 
   const listing = await prisma.listing.create({
     data: {
@@ -45,6 +39,5 @@ export async function POST(req: Request) {
       userId: currentUser.id,
     },
   });
-  console.log('listing', listing);
   return NextResponse.json(listing);
 }
