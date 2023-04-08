@@ -1,7 +1,18 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Listing, User } from '@prisma/client';
 
-export type SafeListing = Omit<Listing, 'createAt'> & {
+export type SafeListing = Omit<Listing, 'createdAt'> & {
   createdAt: string;
+};
+
+export type SafeReservations = Omit<
+  Reservation,
+  'createdAt' | 'startDate' | 'endDate' | 'listing'
+> & {
+  createdAt: string;
+  startDate: string;
+  endDate: string;
+  listing: SafeListing;
 };
 
 export type SafeUser = Omit<User, 'createdAt' | 'updatedAt' | 'emailVerified'> & {
