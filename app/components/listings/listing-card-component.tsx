@@ -5,7 +5,6 @@
 
 import React, { FC, useCallback, MouseEvent, useMemo } from 'react';
 import { SafeListing, SafeUser, SafeReservations } from '@/app/types';
-import { Reservation } from '@prisma/client';
 import { useRouter } from 'next/navigation';
 import useCountries from '@/app/hooks/useCountries';
 import { format } from 'date-fns';
@@ -64,6 +63,7 @@ const ListingCard: FC<ListingCardProps> = ({
     const end = new Date(reservation.endDate);
     return `${format(start, 'PP')} - ${format(end, 'PP')}`;
   }, [reservation]);
+
   return (
     <div
       onClick={() => router.push(`/listings/${data.id}`)}

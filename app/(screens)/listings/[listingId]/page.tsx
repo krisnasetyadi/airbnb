@@ -15,7 +15,6 @@ const ListingPage = async ({ params }: { params: IParams }) => {
   const listing = await getListingById(params);
   const reservations = await getReservations(params);
   const currentUser = await getCurrentUser();
-  console.log('params listings[]', params, 'listing', listing);
   if (!listing) {
     return (
       <ClientOnly>
