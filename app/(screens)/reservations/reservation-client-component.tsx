@@ -4,11 +4,11 @@ import { toast } from 'react-hot-toast';
 import axios from 'axios';
 import React, { FC, useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { SafeReservations, SafeUser } from '../types';
+import { SafeReservations, SafeUser } from '../../types';
 
-import Heading from '../components/heading-component';
-import Container from '../components/container-component';
-import ListingCard from '../components/listings/listing-card-component';
+import Heading from '../../components/heading-component';
+import Container from '../../components/container-component';
+import ListingCard from '../../components/listings/listing-card-component';
 
 interface ReservationsClientProps {
   reservations: SafeReservations[];

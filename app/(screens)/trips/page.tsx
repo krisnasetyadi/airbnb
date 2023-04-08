@@ -1,8 +1,8 @@
-import EmptyState from '../components/empty-state-component';
-import ClientOnly from '../components/client-only-component';
+import EmptyState from '../../components/empty-state-component';
+import ClientOnly from '../../components/client-only-component';
 
-import getCurrentUser from '../actions/getCurrentUser';
-import getReservations from '../actions/getReservations';
+import getCurrentUser from '../../actions/getCurrentUser';
+import getReservations from '../../actions/getReservations';
 import TripsClient from './trips-client-component';
 
 const TripsPage = async () => {

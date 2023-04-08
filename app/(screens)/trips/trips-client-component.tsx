@@ -1,13 +1,13 @@
 'use client';
 
 import React, { FC, useCallback, useState } from 'react';
-import { SafeUser, SafeReservations } from '../types';
-import Container from '../components/container-component';
-import Heading from '../components/heading-component';
+import { SafeUser, SafeReservations } from '../../types';
+import Container from '../../components/container-component';
+import Heading from '../../components/heading-component';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
-import ListingCard from '../components/listings/listing-card-component';
+import ListingCard from '../../components/listings/listing-card-component';
 
 interface TripsClientProps {
   reservations: SafeReservations[];
