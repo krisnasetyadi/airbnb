@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
 'use client';
 import React, { FC } from 'react';
 import useCountries from '@/app/hooks/useCountries';

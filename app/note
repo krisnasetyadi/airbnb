@@ -1,0 +1,4 @@
+27 March 2023 nex out does not support the app api folder
+so we cannot just create a nextAuth file inside app folder
+this is the only instance where we still need to use the pages folder
+pages API folder will not deprecated for a very long time because of the migration period that next 13 needs to allow

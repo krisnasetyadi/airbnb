@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
 import React from 'react';
 import EmptyState from '@/app/components/empty-state-component';
 import ClientOnly from '@/app/components/client-only-component';

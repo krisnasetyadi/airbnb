@@ -1,3 +1,6 @@
+/* eslint-disable import/named */
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
 'use client';
 
 import React, { FC } from 'react';

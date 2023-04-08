@@ -1,8 +1,10 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
+import React, { FC } from 'react';
 import Container from '@/app/components/container-component';
 import Heading from '@/app/components/heading-component';
 import ListingCard from '@/app/components/listings/listing-card-component';
 import { SafeListing, SafeUser } from '@/app/types';
-import { FC } from 'react';
 
 interface FavoriteClientProps {
   listings: SafeListing[];
